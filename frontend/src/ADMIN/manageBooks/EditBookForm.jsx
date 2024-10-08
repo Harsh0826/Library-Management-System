@@ -31,9 +31,8 @@ const EditBookForm = () => {
   const fetchBookData = async () => {
     try {
       const response = await axios.get(`${API_URL}/${id}`);
-
       setBookData(response.data.data);
-      setImagePath(`${backend_server}/${response.data.data.image}`);
+      setImagePath(`${response.data.data.image}`);
     } catch (error) {
       console.log("ERROR FETCHING BOOK data using _id");
     }
