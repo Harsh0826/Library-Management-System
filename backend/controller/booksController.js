@@ -28,6 +28,7 @@ const postBook = async (req, res) => {
     Key: `books/${Date.now()}_${req.file.originalname}`, // S3 key for the file
     Body: fileContent,
     ContentType: req.file.mimetype, // Ensure the content type is correct
+    ACL: 'public-read', // Optional: Make the file publicly readable
   };
 
   // Upload the image to S3

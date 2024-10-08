@@ -53,17 +53,20 @@ const updateBookImage = async (req, res) => {
     const oldImageKey = old_imageFileLocation.split('.com/books/')[1]; // Extract the key from the old image URL
     const decodedOldImageKey = decodeURIComponent(oldImageKey);
   
-    await s3.deleteObject({
+    s3.deleteObject({
       Bucket: process.env.AWS_S3_BUCKET_NAME,
       Key: decodedOldImageKey,
     }).promise();
 
     // Cleanup: Delete the local file
-    fs.unlink(new_imageFileLocation, (err) => {
-      if (err) {
-        console.error(`Error deleting local file: ${err}`);
-      }
-    });
+    const imagePath = path.join(__dirname, '..', old_imageFileLocation)
+  // console.log('Deleted Image FILE PATH : ', imagePath)
+  fs.unlink(imagePath, (err) => {
+    if (err) {
+      console.error(`Error deleting image file: ${err}`)
+    }
+  })
+
 
     res.status(StatusCodes.OK).json({ success: true, data: { id: bookID, newImageUrl } });
   } catch (error) {
