@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { backend_server } from '../../main'
 import axios from 'axios'
 import { FiCopy } from 'react-icons/fi'
@@ -15,6 +15,19 @@ const IssueBookToUser = () => {
 
   const [filterFields, setFilterFields] = useState(empty_field)
   const [allBooks, setAllBooks] = useState([])
+
+   useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setAllBooks(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchBooks();
+  }, []); 
 
   const handleOnChange = async (e) => {
     const { name, value } = e.target

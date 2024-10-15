@@ -49,7 +49,7 @@ export const adminpanelData = [
 
   {
     id: 7,
-    title: `Goto Logout`,
+    title: `Logout`,
     url: '/admin/logout',
     panel_icon: <AiOutlineLogout />,
   },

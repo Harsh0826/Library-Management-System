@@ -47,7 +47,7 @@ export const sidebarData = [
 
   {
     id: 10,
-    title: `Goto Logout`,
+    title: `Logout`,
     url: '/admin/logout',
   },
 ]

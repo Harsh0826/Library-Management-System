@@ -14,16 +14,17 @@ const AddNewBook = () => {
   const empty_inputfield = {
     title: "",
     author: "",
-    description: "some random description about book",
+    description: "",
     category: "",
     available: true,
     featured: false,
-    language: "ENGLISH",
+    language: "",
   };
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState();
   const [inputvalue, setInputValue] = useState(empty_inputfield);
+  const [languages, setLanguages] = useState([]);
 
   // create a preview as a side effect, whenever selected file is changed
   useEffect(() => {
@@ -38,6 +39,25 @@ const AddNewBook = () => {
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedImage]);
+
+   useEffect(() => {
+    const fetchLanguages = async () => {
+      try {
+        const response = await fetch('https://restcountries.com/v3.1/all');
+        const data = await response.json();
+        const languageSet = new Set();
+        data.forEach(country => {
+          const langs = Object.values(country.languages || {});
+          langs.forEach(lang => languageSet.add(lang));
+        });
+        setLanguages([...languageSet]);
+      } catch (error) {
+        console.error('Error fetching languages:', error);
+      }
+    };
+
+    fetchLanguages();
+  }, []);
 
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
@@ -179,18 +199,23 @@ const AddNewBook = () => {
             </Form.Group>
           </Row>
           <Row className="mb-3">
-            <Form.Group as={Col}>
-              <Form.Label>Language</Form.Label>
-              <Form.Control
-                type="text"
-                onChange={handleLanguageOnChange}
-                value={inputvalue.language}
-                placeholder="Language"
-                name="language"
-                autoComplete="off"
-                required
-              />
-            </Form.Group>
+         <Form.Group as={Col}>
+      <Form.Label>Language</Form.Label>
+      <Form.Control
+        as="select"
+        onChange={handleLanguageOnChange}
+        value={inputvalue.language}
+        name="language"
+        required
+      >
+        <option value="">Select Language</option>
+        {languages.map((lang, index) => (
+          <option key={index} value={lang}>
+            {lang}
+          </option>
+        ))}
+      </Form.Control>
+    </Form.Group>
             <Form.Group
               as={Col}
               className="d-flex"

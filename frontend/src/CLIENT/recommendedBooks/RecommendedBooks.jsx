@@ -41,7 +41,7 @@ const RecommendedBooks = () => {
             {latestBooks.length > 0 ? (
               latestBooks.map((book) => {
                 const { _id, title, image, author, available } = book
-                const imgSrc = `${backend_server}/${image}`
+                const imgSrc = `${image}`
 
                 return (
                   <div

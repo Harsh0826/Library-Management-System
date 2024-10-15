@@ -7,12 +7,12 @@ const Footer = () => {
     <footer className='footer' style={{ marginTop: 'auto' }}>
       <div className='container'>
         <div className='row'>
-          <div className='col-md-4'>
+          <div className='col-md-4'>  
             <h5 className='h5 mt-3'>Info</h5>
             <ul className='list-unstyled'>
-              <li>Email: info@library.com</li>
-              <li>Phone: +977-9801234568</li>
-              <li>Address: Kathmandu,Nepal</li>
+              <li>Email: XX@gmail.com</li>
+              <li>Phone: +91-1234567890</li>
+              <li>Address: XXX,XXX</li>
             </ul>
           </div>
           <div className='col-md-4'>

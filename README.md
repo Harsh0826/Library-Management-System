@@ -31,13 +31,6 @@ CLIENT can do -
 4. Using MongoDB: v6.0.6
    Using Mongosh: v2.0.2
 
-## Demo
-
-![](https://mraalu.pythonanywhere.com/media/project/LMS.gif)
-
-## Documentation
-
-[Documentation Coming Soon!](https://www.github.com/MrAalu)
 
 ## How to run Project locally :
 
@@ -98,10 +91,6 @@ ADMIN :
 1. Code Comments are Loveletter's you leave behind for your future self.
 2. If you cant Solve it, address it for your Future Self. He sure can!
 
-## Feedback && Queries
-
-If you have any feedback, feel free to reach out :)  
-Email : amit.kc240@gmail.com
 
 ## Tech Stack
 
@@ -109,7 +98,7 @@ Email : amit.kc240@gmail.com
 
 **Backend :** Node, Express, MongoDB
 
-#### Developed By :- [@MrAalu](https://www.github.com/MrAalu)
+#### Developed By :- (https://www.github.com/harsh0826)
 =======
 Example plain HTML site using GitLab Pages.
 

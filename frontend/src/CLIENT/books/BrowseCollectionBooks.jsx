@@ -13,7 +13,7 @@ const BrowseCollectionBooks = ({ bookData, searchResult }) => {
         bookData.map((book) => {
           const { _id, title, image, author, available } = book
 
-          const imgSrc = `${backend_server}/${image}`
+          const imgSrc = `${image}`
 
           return (
             <div className='col-lg-3 col-md-4 col-sm-6 col-6 gy-3 ' key={_id}>
